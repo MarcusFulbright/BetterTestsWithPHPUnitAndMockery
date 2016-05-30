@@ -1,0 +1,27 @@
+{
+    "name": "Mbright/TestingTalkRepo",
+    "description": "Repository to accompany my talk on automated testing and PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcus Fulbright",
+            "email": "fulbright.marcus@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "^1.17",
+        "aura/sql": "^2.5",
+        "vlucas/phpdotenv": "^2.2"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mbright\\": "src/"
+        }
+    }
+}
