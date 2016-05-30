@@ -6,50 +6,9 @@ use Mbright\Model\FizzBuzz;
 
 class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * We could write tests like these for each and every input.
-     */
-    public function testThree()
-    {
-        $fizzBuzz = new FizzBuzz();
-        $expected = 'Fizz';
-        $this->assertEquals($expected, $fizzBuzz->handleInteger(3));
-    }
-
-    public function testFive()
-    {
-        $fizzBuzz = new FizzBuzz();
-        $expected = 'Buzz';
-        $this->assertEquals($expected, $fizzBuzz->handleInteger(5));
-    }
-
-    /**
-     * This is already getting tedious right?
-     */
-    public function testFifteen()
-    {
-        $fizzBuzz = new FizzBuzz();
-        $expected = 'FizzBuzz';
-        $this->assertEquals($expected, $fizzBuzz->handleInteger(15));
-    }
-
-    /**
-     * There has to be a better way
-     */
-    public function handlefour()
-    {
-        $fizzBuzz = new FizzBuzz();
-        $expected = '4';
-        $this->assertEquals($expected, $fizzBuzz->handleInteger(4));
-    }
-
-    /**
-     * Create a PHPUnit data provider. This function is responsible for return an array of data that can be supplied as arguments to our Unit Test.
-     */
     public  function getData()
     {
         return [
-            //each entry represents data passed as arguments to the test. The key is used to identify a particular data set.
             'test one' => [1, 1],
             'test two' => [2, 2],
             'test three' => [3, 'Fizz'],
@@ -69,13 +28,24 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Add the annotation to us data from the specified method.
      * @dataProvider getData()
      */
     public function testWithData($int, $expected)
     {
-        $fizzBuzz = new FizzBuzz();
+        // Create a test double for the printer
+        $printer = \Mockery::mock('\Mbright\Model\Printer');
+        $printer->shouldReceive('setFormat')->with('string');
+        if ($expected === 'Fizz') {
+            $printer->shouldReceive('handleFizz')->andReturn('Fizz');
+        } elseif ($expected === 'Buzz') {
+            $printer->shouldReceive('handleBuzz')->andReturn('Buzz');
+        } elseif ($expected === 'FizzBuzz') {
+            $printer->shouldReceive('handleFizzBuzz')->andReturn('FizzBuzz');
+        } else {
+            $printer->shouldReceive('handleInteger')->andReturn($expected);
+        }
+
+        $fizzBuzz = new FizzBuzz($printer);
         $this->assertEquals($expected, $fizzBuzz->handleInteger($int));
-        //This was way easier right?
     }
 }
