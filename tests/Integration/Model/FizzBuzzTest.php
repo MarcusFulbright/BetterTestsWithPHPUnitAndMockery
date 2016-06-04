@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Integration;
+namespace Tests\Integration\Model;
 
 use Mbright\Model\FizzBuzz;
 use Mbright\Model\Printer;
