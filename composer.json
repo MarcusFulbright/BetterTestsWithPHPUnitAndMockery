@@ -18,11 +18,17 @@
     },
     "require-dev": {
         "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "5.4.*"
+        "guzzlehttp/guzzle": "~6.0",
+        "phpunit/phpunit": "~5.4"
     },
     "autoload": {
         "psr-4": {
             "Mbright\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mbright\\Tests\\": "tests/"
         }
     }
 }
