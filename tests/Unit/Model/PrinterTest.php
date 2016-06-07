@@ -42,7 +42,7 @@ class PrinterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($output, $printer->handleBuzz());
     }
 
-    public function fizzBuzzProvider($format, $output)
+    public function fizzBuzzProvider()
     {
         return [
             'string' => ['string', 'FizzBuzz'],

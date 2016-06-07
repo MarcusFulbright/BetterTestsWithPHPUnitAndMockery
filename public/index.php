@@ -8,22 +8,21 @@ if (PHP_SAPI == 'cli-server') {
     }
 }
 
-require __DIR__ . '/../vendor/autoload.php';
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+use Mbright\Model\FizzBuzz;
+use Mbright\Model\Printer;
 
-session_start();
+require '../vendor/autoload.php';
 
-// Instantiate the app
-$settings = require __DIR__ . '/../src/settings.php';
-$app = new \Slim\App($settings);
+$app = new \Slim\App;
+$app->get('/fizzbuzz/{integer}', function (Request $request, Response $response) {
+    $integer = $request->getAttribute('integer');
+    $fizz_buzz = new FizzBuzz(new Printer());
+    $data = $fizz_buzz->handleInteger($integer, 'json');
+    $response->getBody()->write($data);
+    $response = $response->withHeader('Content-type', 'application/json');
 
-// Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
-
-// Register middleware
-require __DIR__ . '/../src/middleware.php';
-
-// Register routes
-require __DIR__ . '/../src/routes.php';
-
-// Run app
+    return $response;
+});
 $app->run();
