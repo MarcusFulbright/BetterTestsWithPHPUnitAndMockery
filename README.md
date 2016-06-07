@@ -6,8 +6,9 @@ This repository is mean to serve as a reference for those seeking to begin writi
 
 1. PHP 5.5+
 2. Installation of composer
-3. Global install of PHPUnit
-5. Mysql install
+3. Mysql install
+
+> Note: This repository comes with PHPUnit defined as a dependency in the `composer.json`. In the real world, you should have PHPUnit installed globally on your system, as this is a test suite run-time dependency and not a dependency of of the project it self. There are other test runners out there and others might prefer to use one of them instead.
 
 ## Set Up
 
@@ -15,6 +16,7 @@ This repository is mean to serve as a reference for those seeking to begin writi
 2. `cp .env.dist .env`
 3. Create a mysql DB to use
 4. Fill in your DB credentials and DB name in the newly created `.env` file
+5. `composer install`
 
 ## Branches Explained
 
@@ -26,5 +28,5 @@ This repository is mean to serve as a reference for those seeking to begin writi
 
 **Database**: This branch adds a database into the mix. Unit tests exist for the new database classes. These tests show several ways to handle a database while testing including: mocking the connection, using transactions to ensure every test starts with the DB in the same state, and how to insert records into the DB when needed.
 
-**Functional**: @TODO
+**Functional**: This branch adds functional testing using PHPs built in web server. Here we use Slim PHP to make a single API endpoint to provide an entry point to our fizzbuzz function. We create our own LocalWebTestCase which handles spinning up / tearing down the web server for each test.
 
