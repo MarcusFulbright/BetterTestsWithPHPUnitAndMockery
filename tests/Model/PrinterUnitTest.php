@@ -9,6 +9,15 @@ use Mbright\Model\Printer;
  */
 class PrinterUnitTest extends \PHPUnit_Framework_TestCase
 {
+    public function testFizzString()
+    {
+        $printer = new Printer();
+        $expected = 'Fizz';
+        $actual = $printer->handleFizz();
+        $this->assertEquals($expected, $actual);
+    }
+    
+    
     public function fizzProvider()
     {
         return [

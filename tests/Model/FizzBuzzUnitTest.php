@@ -9,6 +9,7 @@ use Mbright\Model\FizzBuzz;
  */
 class FizzBuzzUnitTest extends \PHPUnit_Framework_TestCase
 {
+    //@todo add method name to data provider
     public  function getData()
     {
         return [
@@ -37,7 +38,8 @@ class FizzBuzzUnitTest extends \PHPUnit_Framework_TestCase
     {
         // Create a test double for the printer
         $printer = \Mockery::mock('\Mbright\Model\Printer');
-        $printer->shouldReceive('setFormat')->with('string');
+        $printer->shouldReceive('setFormat')->with('string')->once();
+//@todo refactor so that method name is in dataprovider
         if ($expected === 'Fizz') {
             $printer->shouldReceive('handleFizz')->andReturn('Fizz');
         } elseif ($expected === 'Buzz') {

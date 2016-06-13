@@ -30,15 +30,13 @@ class ConnectionUnitTest extends \PHPUnit_Framework_TestCase
     {
         $message = 'testMessage';
         //define a closure function used to validate arguments that get passed to $pdo->perform()
-        $validate_args = function($sql, $binds) use ($message) {
-            return $binds['message'] === $message;
-        };
-        $this->pdo->shouldReceive('perform')->with($validate_args);
+        $this->pdo->shouldReceive('perform')->once();
+        $this->connection->persistMessageHistory($message);
     }
 
     public function testFetchAllHistories()
     {
-        $this->pdo->shouldReceive('fetchAll')->with('select * from fizzbuzz_message_history');
+        $this->pdo->shouldReceive('fetchAll')->with('select * from fizzbuzz_message_history')->once();
         $this->connection->fetchAllMessageHistories();
     }
 }
