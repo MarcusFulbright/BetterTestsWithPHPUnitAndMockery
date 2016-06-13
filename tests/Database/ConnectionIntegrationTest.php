@@ -1,12 +1,15 @@
 <?php
 
-namespace Tests\Integration\Database;
+namespace Tests\Database;
 
 use Aura\Sql\ExtendedPdo;
 use Mbright\Database\Connection;
 use Mbright\Database\ExtendedPdoFactory;
 
-class ConnectionTest extends \PHPUnit_Framework_TestCase
+/**
+ * @group Integration
+ */
+class ConnectionIntegrationTest extends \PHPUnit_Framework_TestCase
 {
     /** @var Connection */
     protected $connection;

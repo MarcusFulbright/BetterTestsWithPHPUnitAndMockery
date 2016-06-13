@@ -1,11 +1,14 @@
 <?php
 
-namespace Tests\Integration\Model;
+namespace Tests\Model;
 
 use Mbright\Model\FizzBuzz;
 use Mbright\Model\Printer;
 
-class FizzBuzzTest extends \PHPUnit_Framework_TestCase
+/**
+ * @Group Integration
+ */
+class FizzBuzzIntegrationTest extends \PHPUnit_Framework_TestCase
 {
     public function fizzBuzzProvider()
     {

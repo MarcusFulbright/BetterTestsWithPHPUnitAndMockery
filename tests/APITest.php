@@ -4,6 +4,9 @@ namespace Mbright\Tests\Functional;
 
 use Mbright\Tests\LocalWebTestCase;
 
+/**
+ * @group Functional
+ */
 class APITest extends LocalWebTestCase
 {
     public function testFizzBuzzResponse()

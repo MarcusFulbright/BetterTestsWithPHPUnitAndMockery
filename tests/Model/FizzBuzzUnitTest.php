@@ -4,7 +4,10 @@ namespace Tests\Unit\Model;
 
 use Mbright\Model\FizzBuzz;
 
-class FizzBuzzTest extends \PHPUnit_Framework_TestCase
+/**
+ * @group Unit
+ */
+class FizzBuzzUnitTest extends \PHPUnit_Framework_TestCase
 {
     public  function getData()
     {

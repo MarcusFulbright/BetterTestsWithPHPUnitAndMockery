@@ -4,7 +4,10 @@ namespace Tests\Unit\Model;
 
 use Mbright\Model\Printer;
 
-class PrinterTest extends \PHPUnit_Framework_TestCase
+/**
+ * @group Unit
+ */
+class PrinterUnitTest extends \PHPUnit_Framework_TestCase
 {
     public function fizzProvider()
     {

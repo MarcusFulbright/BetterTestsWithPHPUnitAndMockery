@@ -5,7 +5,10 @@ namespace Mbright\Tests\Database;
 use Mbright\Database\Connection;
 use Mockery\MockInterface;
 
-class ConnectionTest extends \PHPUnit_Framework_TestCase
+/**
+ * @group Unit
+ */
+class ConnectionUnitTest extends \PHPUnit_Framework_TestCase
 {
     /** @var MockInterface */
     protected $pdo;
