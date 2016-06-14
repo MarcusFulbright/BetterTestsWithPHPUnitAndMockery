@@ -1,6 +1,6 @@
 # Better Tests with PHPUnit and Mockery
 
-This repository is mean to serve as a reference for those seeking to begin writing or get better at writing automated tests. For the purposes of Illustration, the simple problem of FizzBuzz is used. For Later iterations, this solution gets radically over engineered to create interesting situations for testing.
+This repository is mean to serve as a reference for those seeking to begin writing or get better at writing automated tests. For the purposes of Illustration, the simple problem of FizzBuzz is used as an illustration. The purpose isn't to example the application, but to learn about testing practices.
 
 ## Requirements
 
