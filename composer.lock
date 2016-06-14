@@ -513,6 +513,7 @@
     ],
     "packages-dev": [
         {
+<<<<<<< HEAD
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -567,6 +568,8 @@
             "time": "2015-06-14 21:17:01"
         },
         {
+=======
+>>>>>>> added functional tests using built in webserver
             "name": "guzzlehttp/guzzle",
             "version": "6.2.0",
             "source": {
