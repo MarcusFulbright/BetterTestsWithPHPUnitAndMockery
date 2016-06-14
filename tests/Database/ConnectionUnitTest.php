@@ -29,7 +29,6 @@ class ConnectionUnitTest extends \PHPUnit_Framework_TestCase
     public function testPersistMessageHistory()
     {
         $message = 'testMessage';
-        //define a closure function used to validate arguments that get passed to $pdo->perform()
         $this->pdo->shouldReceive('perform')->once();
         $this->connection->persistMessageHistory($message);
     }

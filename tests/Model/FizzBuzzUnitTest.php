@@ -9,46 +9,36 @@ use Mbright\Model\FizzBuzz;
  */
 class FizzBuzzUnitTest extends \PHPUnit_Framework_TestCase
 {
-    //@todo add method name to data provider
     public  function getData()
     {
         return [
-            'test one' => [1, 1],
-            'test two' => [2, 2],
-            'test three' => [3, 'Fizz'],
-            'test four' => [4, 4],
-            'test five' => [5, 'Buzz'],
-            'test six' => [6, 'Fizz'],
-            'test seven' => [7, 7],
-            'test eight' => [8, 8],
-            'test nine' => [9, 'Fizz'],
-            'test ten' => [10, 'Buzz'],
-            'test eleven' => [11, 11],
-            'test twelve' => [12, 'Fizz'],
-            'test thirteen' => [13, 13],
-            'test fourteen' => [14, 14],
-            'test fifteen' => [15, 'FizzBuzz']
+            'test one' => [1, 1, 'handleInteger'],
+            'test two' => [2, 2, 'handleInteger'],
+            'test three' => [3, 'Fizz', 'handleFizz'],
+            'test four' => [4, 4, 'handleInteger'],
+            'test five' => [5, 'Buzz', 'handleBuzz'],
+            'test six' => [6, 'Fizz', 'handleFizz'],
+            'test seven' => [7, 7, 'handleInteger'],
+            'test eight' => [8, 8, 'handleInteger'],
+            'test nine' => [9, 'Fizz', 'handleFizz'],
+            'test ten' => [10, 'Buzz', 'handleBuzz'],
+            'test eleven' => [11, 11, 'handleInteger'],
+            'test twelve' => [12, 'Fizz', 'handleFizz'],
+            'test thirteen' => [13, 13, 'handleInteger'],
+            'test fourteen' => [14, 14, 'handleInteger'],
+            'test fifteen' => [15, 'FizzBuzz', 'handleFizzBuzz']
         ];
     }
 
     /**
      * @dataProvider getData()
      */
-    public function testWithData($int, $expected)
+    public function testWithData($int, $expected, $method)
     {
         // Create a test double for the printer
         $printer = \Mockery::mock('\Mbright\Model\Printer');
         $printer->shouldReceive('setFormat')->with('string')->once();
-//@todo refactor so that method name is in dataprovider
-        if ($expected === 'Fizz') {
-            $printer->shouldReceive('handleFizz')->andReturn('Fizz');
-        } elseif ($expected === 'Buzz') {
-            $printer->shouldReceive('handleBuzz')->andReturn('Buzz');
-        } elseif ($expected === 'FizzBuzz') {
-            $printer->shouldReceive('handleFizzBuzz')->andReturn('FizzBuzz');
-        } else {
-            $printer->shouldReceive('handleInteger')->andReturn($expected);
-        }
+        $printer->shouldReceive($method)->andReturn($expected);
 
         $fizzBuzz = new FizzBuzz($printer);
         $this->assertEquals($expected, $fizzBuzz->handleInteger($int));
