@@ -6,7 +6,7 @@ use Mbright\Model\FizzBuzz;
 use Mbright\Model\Printer;
 
 /**
- * @Group Integration
+ * @group Integration
  */
 class FizzBuzzIntegrationTest extends \PHPUnit_Framework_TestCase
 {

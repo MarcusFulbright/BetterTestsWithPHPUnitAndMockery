@@ -9,15 +9,20 @@ use Mbright\Model\Printer;
  */
 class PrinterUnitTest extends \PHPUnit_Framework_TestCase
 {
+    protected $printer;
+
+    public function setUp()
+    {
+        $this->printer = new Printer();
+    }
+
     public function testFizzString()
     {
-        $printer = new Printer();
         $expected = 'Fizz';
-        $actual = $printer->handleFizz();
+        $actual = $this->printer->handleFizz();
         $this->assertEquals($expected, $actual);
     }
-    
-    
+
     public function fizzProvider()
     {
         return [
@@ -31,9 +36,8 @@ class PrinterUnitTest extends \PHPUnit_Framework_TestCase
      */
     public function testFizz($format, $output)
     {
-        $printer = new Printer();
-        $printer->setFormat($format);
-        $this->assertEquals($output, $printer->handleFizz());
+        $this->printer->setFormat($format);
+        $this->assertEquals($output, $this->printer->handleFizz());
     }
 
     public function buzzProvider()
@@ -49,9 +53,8 @@ class PrinterUnitTest extends \PHPUnit_Framework_TestCase
      */
     public function testBuzz($format, $output)
     {
-        $printer = new Printer();
-        $printer->setFormat($format);
-        $this->assertEquals($output, $printer->handleBuzz());
+        $this->printer->setFormat($format);
+        $this->assertEquals($output, $this->printer->handleBuzz());
     }
 
     public function fizzBuzzProvider()

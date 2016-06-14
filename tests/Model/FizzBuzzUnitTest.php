@@ -9,7 +9,7 @@ use Mbright\Model\FizzBuzz;
  */
 class FizzBuzzUnitTest extends \PHPUnit_Framework_TestCase
 {
-    public  function getData()
+    public function getData()
     {
         return [
             'test one' => [1, 1, 'handleInteger'],
@@ -42,5 +42,10 @@ class FizzBuzzUnitTest extends \PHPUnit_Framework_TestCase
 
         $fizzBuzz = new FizzBuzz($printer);
         $this->assertEquals($expected, $fizzBuzz->handleInteger($int));
+    }
+    
+    public function tearDown()
+    {
+        \Mockery::close();
     }
 }

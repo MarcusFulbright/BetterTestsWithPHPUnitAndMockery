@@ -22,21 +22,18 @@ class FizzBuzz
      */
     public function handleInteger($int, $format = 'string')
     {
+        $this->printer->setFormat($format);
         switch (true) {
             case $int % 15 === 0:
-                $this->printer->setFormat($format);
                 $output = $this->printer->handleFizzBuzz();
                 break;
             case $int % 5 === 0:
-                $this->printer->setFormat($format);
                 $output = $this->printer->handleBuzz();
                 break;
             case ($int % 3 === 0):
-                $this->printer->setFormat($format);
                 $output = $this->printer->handleFizz();
                 break;
             default:
-                $this->printer->setFormat($format);
                 $output = $this->printer->handleInteger($int);
         }
         return $output;

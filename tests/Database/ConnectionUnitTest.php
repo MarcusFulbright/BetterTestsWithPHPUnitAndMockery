@@ -21,6 +21,11 @@ class ConnectionUnitTest extends \PHPUnit_Framework_TestCase
         $this->pdo = \Mockery::mock(\Aura\Sql\ExtendedPdo::class);
         $this->connection = new Connection($this->pdo);
     }
+    
+    public function tearDown()
+    {
+        \Mockery::close();
+    }
 
     /**
      * Validate that the perform method gets called with the correct message. No need to verify the SQL or date time as
